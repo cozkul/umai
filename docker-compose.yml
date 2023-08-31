@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    env_file: 
+      - .env
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app
+    # Code below is executed upon launching the service
+    # Will allow docker compose up to automatically start our main.go
+    # "air" replaces "go run" for live updates
+    command: air cmd/main.go -b 0.0.0.0
+  db:
+    image: postgres:alpine
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+volumes:
+  postgres-db: 
