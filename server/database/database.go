@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/cozkul/umai/models"
+	"github.com/cozkul/umai/server/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm" // GORM is an ORM (Object Relational Mapper) library for Go
 	"gorm.io/gorm/logger"

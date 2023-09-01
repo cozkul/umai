@@ -14,7 +14,8 @@
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
-/tmp/*
+# Ignore all air builds
+server/tmp/*
 
-.env
-.DS_Store
+server/.env
+server/.DS_Store

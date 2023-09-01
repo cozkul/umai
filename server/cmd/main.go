@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/cozkul/umai/database"
+	"github.com/cozkul/umai/server/database"
 	"github.com/gofiber/fiber/v2"
 )
 

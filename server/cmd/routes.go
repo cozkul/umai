@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/cozkul/umai/handlers"
+	"github.com/cozkul/umai/server/handlers"
 	"github.com/gofiber/fiber/v2" // Fiber is an Express.js styled HTTP web framework running on Fasthttp
 )
 
