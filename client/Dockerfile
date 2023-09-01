@@ -5,4 +5,4 @@ WORKDIR /usr/src/app/client
 RUN apk add yarn
 
 # Copy all files in host dir to container
-COPY ./client .
+COPY . .
