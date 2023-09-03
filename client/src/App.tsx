@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Box, List, ThemeIcon } from '@mantine/core';
+import useSWR from "swr";
+import './App.css';
+import AddFact from "./components/AddFact";
+import { CheckCircleFillIcon } from '@primer/octicons-react';
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+export interface Fact {
+  ID: number;
+  CreatedAt: Date;
+  UpdatedAt: Date;
+  DeletedAt: Date;
+  question: string;
+  answer: string;
 }
 
-export default App
+export const ENDPOINT = 'http://localhost:3000'
+
+const fetcher = (url: string) =>
+  fetch(`${ENDPOINT}/${url}`).then((r) => r.json());
+
+function App() {
+  const { data, mutate } = useSWR<Fact[]>(" ", fetcher)
+
+  // Mantine define style using sx
+  return (
+    <Box
+      sx={(theme) => ({
+        padding: "2rem",
+        width: "100%",
+        maxWidth: "40rem",
+        margin: "0 auto",
+      })}
+    >
+      <List spacing="xs" size="sm" mb={12} center>
+        {data?.map((fact: Fact) => {
+          // prefixing keys allows them to be unique
+          return <List.Item key={`fact__${fact.ID}`} icon={
+              fact.ID % 2 == 0 ? (<ThemeIcon color='teal' size={24} radius="xl">
+                <CheckCircleFillIcon size={20} />
+              </ThemeIcon>) : (<ThemeIcon color='gray' size={24} radius="xl">
+                <CheckCircleFillIcon size={20} />
+              </ThemeIcon>)
+            }>
+            {fact.question}
+          </List.Item>
+        })}
+      </List>
+      <AddFact mutate={mutate} />
+    </Box>
+  );
+
+}
+
+export default App;

@@ -6,3 +6,5 @@ RUN apk add yarn
 
 # Copy all files in host dir to container
 COPY . .
+
+RUN yarn install --check-files
