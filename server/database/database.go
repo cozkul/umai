@@ -7,11 +7,12 @@ import (
 
 	"github.com/cozkul/umai/server/models"
 	"gorm.io/driver/postgres"
-	"gorm.io/gorm" // GORM is an ORM (Object Relational Mapper) library for Go
+	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )
 
 type Dbinstance struct {
+	// Capital for public
 	Db *gorm.DB
 }
 

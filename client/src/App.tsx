@@ -19,6 +19,7 @@ const fetcher = (url: string) =>
   fetch(`${ENDPOINT}/${url}`).then((r) => r.json());
 
 function App() {
+  // SWR is a react hook for data fetching
   const { data, mutate } = useSWR<Fact[]>(" ", fetcher)
 
   // Mantine define style using sx
