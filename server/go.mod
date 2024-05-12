@@ -5,7 +5,15 @@ go 1.21.0
 require github.com/gofiber/fiber/v2 v2.49.0
 
 require (
+	github.com/gofiber/utils v0.0.10 // indirect
+	github.com/gorilla/schema v1.1.0 // indirect
+)
+
+require (
 	github.com/andybalholm/brotli v1.0.5 // indirect
+	github.com/gofiber/fiber v1.14.6
+	github.com/golang-jwt/jwt v3.2.2+incompatible
+	github.com/google/go-cmp v0.6.0
 	github.com/google/uuid v1.3.1 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20221227161230-091c0ba34f0a // indirect

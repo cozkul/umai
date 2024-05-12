@@ -16,10 +16,10 @@ frontend-sh:
 	docker exec -it $(frontend_container_id) sh
 
 createdb:
-	docker exec -it $(db_conatiner_id) createdb --username=root --owner=$(db_user) $(db_name)
+	docker exec -it $(db_conatiner_id) createdb --username=umai --owner=$(db_user) $(db_name)
 
 dropdb:
-	docker exec -it $(db_conatiner_id) dropdb $(db_name)
+	docker exec -it $(db_conatiner_id) dropdb -U $(db_user) $(db_name)
 
 migrateup:
 	migrate -path server/database/migrations -database "postgresql://$(db_user):$(db_password)@localhost:5432/$(db_name)?sslmode=disable" -verbose up
