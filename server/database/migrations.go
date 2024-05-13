@@ -19,6 +19,11 @@ func RunMigrations() error {
 	)
 
 	DB.AutoMigrate(
+		&models.TimedEvent{},
+		&models.TickEvent{},
+	)
+
+	DB.AutoMigrate(
 		&models.System{},
 		&models.HyperLane{},
 	)

@@ -51,3 +51,11 @@ type BlackHole struct {
 type Nebula struct {
 	Celestial
 }
+
+func (p *Planet) GetMaxCapacity() Resource {
+	var totalCapacity Resource
+	for _, b := range p.Buildings {
+		totalCapacity.AddValue(b.GetCapacity())
+	}
+	return totalCapacity
+}

@@ -20,6 +20,7 @@ func InitializeUser(newUser *models.User) error {
 		BuildingType: models.PlanetaryControlCenter,
 		PlanetID:     firstPlanet.ID,
 		Level:        1,
+		ResourceTick: &models.TickEvent{},
 	})
 
 	firstPlanet.Population = 1

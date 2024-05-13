@@ -26,7 +26,7 @@ func main() {
 
 	setupRoutes(app)
 
-	app.Listen(":3000")
+	go helpers.SetUpServerTick()
 
-	helpers.SetUpServerTick()
+	app.Listen(":3000")
 }
